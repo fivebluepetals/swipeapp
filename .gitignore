@@ -3,3 +3,9 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# IntelliJ
+.idea/
+
+# Generated assets
+assets/js/
