@@ -1,0 +1,15 @@
+{
+  "name": "swipeapp",
+  "version": "1.0.0",
+  "description": "Gui for creating animations in slides",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tweenjs",
+    "svg"
+  ],
+  "author": "Valerie Wang",
+  "license": "MIT"
+}
