@@ -8,7 +8,7 @@ module.exports = (env = {}) => ({
         main: "./src/main.js",
     },
     output: {
-        path: path.resolve(__dirname, "../assets/js/dist")
+        path: path.resolve(__dirname, "../assets/dist")
     },
     resolve: {
         alias: {
@@ -33,7 +33,10 @@ module.exports = (env = {}) => ({
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: { hmr: !env.prod }
+                        options: {
+                            emit: !env.prod,
+                            publicPath: path.resolve(__dirname, "../assets/css/dist")
+                        }
                     },
                     "css-loader"
                 ]
