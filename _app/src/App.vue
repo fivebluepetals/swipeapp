@@ -1,16 +1,13 @@
 <template>
-  <svg id="app"
-       xmlns="http://www.w3.org/2000/svg">
-    <Lever />
-  </svg>
+  <Canvas />
 </template>
 
 <script>
-import Lever from "./controls/Lever.vue"
+import Canvas from "./workspace/Canvas.vue"
 
 export default {
   components: {
-    Lever
+    Canvas
   },
 
   data() {
@@ -27,6 +24,5 @@ export default {
 svg {
   width: 100%;
   height: 100vh;
-  background-color: #eee;
 }
 </style>
