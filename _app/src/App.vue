@@ -19,7 +19,7 @@ export default {
       groups: [
       ],
       showLoader: true,
-      canvasContent: ''
+      canvasContent: '<circle cx="20" cy="30" r="80" fill="#a2cc11" /><circle cx="100" cy="100" r="50" />'
     }
   },
 
