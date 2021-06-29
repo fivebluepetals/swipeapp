@@ -1,6 +1,7 @@
 <template>
   <Canvas :content="canvasContent" />
-  <Dialog v-show="init" @svgSubmitted="loadSvg($event)" />
+  <Dialog v-show="showLoader" @svgSubmitted="loadSvg($event)" />
+  <button v-show="!showLoader" @click="toggleDialog(true)">Show Loader</button>
 </template>
 
 <script>
@@ -17,7 +18,7 @@ export default {
     return {
       groups: [
       ],
-      init: true,
+      showLoader: true,
       canvasContent: ''
     }
   },
@@ -31,7 +32,11 @@ export default {
 
       this.canvasContent = svg;
       console.log(this.canvasContent);
-      this.init = false;
+      this.toggleDialog(false);
+    },
+
+    toggleDialog(doShow) {
+      this.showLoader = doShow;
     }
   }
 }
@@ -41,5 +46,15 @@ export default {
 svg {
   width: 100%;
   height: 100vh;
+}
+
+button {
+  position: fixed;
+  padding: 10px;
+  background-color: olivedrab;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 </style>
