@@ -25,13 +25,11 @@ export default {
 
   methods: {
     loadSvg(event) {
-      // strip out SVG content and display it in the canvas
       let svgElt = new DOMParser()
               .parseFromString(event.svg, "image/svg+xml"),
           svg = svgElt.documentElement.innerHTML;
 
       this.canvasContent = svg;
-      console.log(this.canvasContent);
       this.toggleDialog(false);
     },
 
