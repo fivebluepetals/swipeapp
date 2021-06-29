@@ -1,13 +1,16 @@
 <template>
   <Canvas />
+  <Dialog />
 </template>
 
 <script>
-import Canvas from "./workspace/Canvas.vue"
+import Canvas from "./workspace/Canvas.vue";
+import Dialog from "./loader/Dialog.vue";
 
 export default {
   components: {
-    Canvas
+    Canvas,
+    Dialog
   },
 
   data() {
