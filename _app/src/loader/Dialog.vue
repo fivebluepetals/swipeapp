@@ -6,15 +6,29 @@
     <label>Copy/paste code inside <pre>svg</pre>-tag:</label>
     <textarea id="#svg-code" />
     <div class="button-bar">
-      <button>animate!</button>
+      <button @click="load">animate!</button>
     </div>
   </div>
 </template>
 
 <script>
+import DOMPurify from 'dompurify';
+
 export default {
   data() {
     return {}
+  },
+
+  methods: {
+    load() {
+      let textArea = this.$el.querySelector("textarea"),
+          sanitized = DOMPurify.sanitize(textArea.value,
+              {USE_PROFILES: {mathMl: true, svg: true}});
+
+      this.$emit("svgSubmitted", {
+        svg: sanitized
+      });
+    }
   }
 }
 </script>

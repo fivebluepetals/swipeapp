@@ -1,6 +1,6 @@
 <template>
   <Canvas />
-  <Dialog />
+  <Dialog v-show="init" @svgSubmitted="loadSvg($event)" />
 </template>
 
 <script>
@@ -16,8 +16,14 @@ export default {
   data() {
     return {
       groups: [
-        {},
-      ]
+      ],
+      init: true
+    }
+  },
+
+  methods: {
+    loadSvg(event) {
+      this.init = false;
     }
   }
 }
