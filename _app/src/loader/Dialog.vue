@@ -23,7 +23,7 @@ export default {
     load() {
       let textArea = this.$el.querySelector("textarea"),
           sanitized = DOMPurify.sanitize(textArea.value,
-              {USE_PROFILES: {mathMl: true, svg: true}});
+              {USE_PROFILES: {mathMl: true, svg: true, svgFilters: true}});
 
       this.$emit("svgSubmitted", {
         svg: sanitized
