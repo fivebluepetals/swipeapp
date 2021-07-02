@@ -84,11 +84,15 @@ export default {
     },
 
     focus(selectedNode) {
-      let svg = this.canvas();
+      let svg = this.canvas(),
+          lastFocus = this.focusNode;
       this.focusNode = selectedNode === svg ? null : selectedNode;
 
       // TODO: trigger the focus event
-      this.onFocus({});
+      this.onFocus({
+        current: this.focusNode,
+        previous: lastFocus
+      });
     },
 
     canvas() {
@@ -96,23 +100,28 @@ export default {
     },
 
     onFocus(event) {
-      // handle the case when the select is none
+      let svg = this.canvas(),
+          rect = svg.querySelector("rect.selection-box");
+
       if (!this.focusNode) {
-        // clear out any rectangles
+        if (rect) {
+          svg.removeChild(rect);
+        }
         return;
       }
 
       // draw a rectangle around the selected element
-      let svg = this.canvas(),
-          rect = document.createElementNS("http://www.w3.org/2000/svg","rect"),
-          bbox = this.focusNode.getBBox();
+      let bbox = this.focusNode.getBBox();
+      if (!rect) {
+        rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
+        svg.appendChild(rect);
+      }
 
       rect.setAttribute("x", bbox.x);
       rect.setAttribute("y", bbox.y);
       rect.setAttribute("width", bbox.width);
       rect.setAttribute("height", bbox.height);
       rect.setAttribute("class", "selection-box");
-      svg.appendChild(rect);
     }
   }
 }
@@ -138,6 +147,10 @@ export default {
   fill: none;
   stroke-width: 1;
   stroke: rgb(0 0 0/10%);
+}
+
+#main-canvas .selection-box .hidden {
+
 }
 
 #control-overlay {
