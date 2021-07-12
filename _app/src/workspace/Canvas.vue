@@ -43,6 +43,11 @@ class SelectMode {
 
   }
 
+  //
+  focus(event) {
+
+  }
+
 }
 
 export default {
